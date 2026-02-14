@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh's Fans</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* === CSS === */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Montserrat', sans-serif; }
+
+body { background-color: #f0f2f5; color: #333; }
+
+header {
+  background-color: #008CFF;
+  color: #fff;
+  padding: 25px;
+  text-align: center;
+  position: sticky;
+  top:0;
+  z-index: 10;
+}
+
+header h1 { font-size: 2.5em; font-weight:600; margin-bottom:5px; }
+header p { color:#e0f0ff; font-size:1.1em; }
+
+.header-buttons { margin-top:15px; }
+.header-buttons button {
+  background: linear-gradient(90deg,#00c6ff,#0072ff);
+  color:white;
+  border:none;
+  padding:10px 20px;
+  margin:5px;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+  transition: 0.3s;
+}
+.header-buttons button:hover { opacity:0.85; }
+
+.container { max-width:1200px; margin:40px auto; padding:0 20px; }
+
+.intro { text-align:center; margin-bottom:40px; }
+.intro h2 { font-size:2em; margin-bottom:10px; }
+.intro p { font-size:1.1em; color:#555; }
+
+.gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px; }
+.gallery-item {
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  position:relative;
+  cursor:pointer;
+}
+.gallery-item:hover { transform:scale(1.05); }
+
+.gallery-item img { width:100%; display:block; }
+.gallery-item h3 { padding:10px; text-align:center; font-size:1.1em; }
+
+.locked::after {
+  content:'🔒 Premium';
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.5em;
+  font-weight:bold;
+  border-radius:10px;
+  transition: all 0.5s ease;
+}
+
+.locked.unlocked::after {
+  opacity:0;
+  transform: scale(0.5) rotate(-15deg);
+}
+
+footer { text-align:center; padding:25px; color:#fff; border-top:1px solid #ddd; margin-top:40px; background:#008CFF; }
+
+.slideshow { position:relative; margin-bottom:40px; }
+.slide { display:none; width:100%; border-radius:10px; }
+.slide.active { display:block; }
+
+/* Premium popup */
+#premium-popup {
+  display:none;
+  position:fixed;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(0.5);
+  background:#fff;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+  text-align:center;
+  z-index:100;
+  transition: all 0.3s ease;
+}
+#premium-popup.show {
+  display:block;
+  transform:translate(-50%,-50%) scale(1);
+}
+#premium-popup h2 { margin-bottom:15px; color:#008CFF; }
+#premium-popup button {
+  background:#008CFF;
+  color:#fff;
+  border:none;
+  padding:10px 20px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+@media(max-width:600px){
+  .header-buttons button { width:100%; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Josh’s Fans</h1>
+  <p>Where teeth are loved, admired, and sometimes brushed twice 😁</p>
+  <div class="header-buttons">
+    <button onclick="alert('Login clicked')">Login</button>
+    <button onclick="alert('Subscribe clicked')">Subscribe</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <section class="intro">
+    <h2>Welcome to Josh’s dental obsession!</h2>
+    <p>Josh loves teeth so much, he named his fans site after them. Here you'll find everything from sparkling smiles to braces that rock. Premium content? Only for those who REALLY love molars.</p>
+  </section>
+
+  <!-- Slideshow -->
+  <div class="slideshow">
+    <img src="https://images.unsplash.com/photo-1588776814546-9e6c9f6b94c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" class="slide active" alt="Toothbrush Time">
+    <img src="https://images.unsplash.com/photo-1606813901611-63f2b65b48b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" class="slide" alt="Braces Fun">
+    <img src="https://images.unsplash.com/photo-1597586123372-fc76fa94b912?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" class="slide" alt="Tooth X-Ray">
+  </div>
+
+  <h2 style="margin-bottom:20px;">Dental Highlights</h2>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1606813901611-63f2b65b48b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Dental Cleaning">
+      <h3>Professional Teeth Cleaning 😁</h3>
+    </div>
+    <div class="gallery-item locked">
+      <img src="https://images.unsplash.com/photo-1590080872771-5398b092abeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Braces">
+      <h3>Orthodontics Braces 🎸</h3>
+    </div>
+    <div class="gallery-item locked">
+      <img src="https://images.unsplash.com/photo-1576765607922-b15e5f7b9ef0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Dental Tools">
+      <h3>Dental Instruments 🔧</h3>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1597586123372-fc76fa94b912?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Tooth X-Ray">
+      <h3>Tooth X-Rays 📸</h3>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2026 Josh’s Fans. All Rights Reserved.
+</footer>
+
+<!-- Premium popup -->
+<div id="premium-popup">
+  <h2>Premium Teeth Post 😁</h2>
+  <p>Josh’s love for teeth is unmatched! You just unlocked a molar masterpiece.</p>
+  <button id="close-popup">Close</button>
+</div>
+
+<script>
+// === JS ===
+// Slideshow rotation
+let slides = document.querySelectorAll('.slide');
+let current = 0;
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}, 4000);
+
+// Unlock premium content with popup
+let lockedItems = document.querySelectorAll('.gallery-item.locked');
+let popup = document.getElementById('premium-popup');
+let closeBtn = document.getElementById('close-popup');
+
+lockedItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // Show popup
+    popup.classList.add('show');
+    // Animate overlay disappearing
+    item.classList.add('unlocked');
+    item.querySelector('h3').textContent += ' (Unlocked 😁)';
+    setTimeout(() => {
+      item.classList.remove('locked');
+      item.classList.remove('unlocked');
+    }, 1000);
+  });
+});
+
+// Close popup
+closeBtn.addEventListener('click', () => {
+  popup.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
